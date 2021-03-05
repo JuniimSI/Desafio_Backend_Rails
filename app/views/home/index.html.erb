@@ -1,0 +1,13 @@
+<html>
+
+<body>
+    <h1><%= @deputados %></h1>
+    
+    <ul>
+        <li> <% if params[:controller] == "csv" %> <% end %>
+            <a href="/csv"> CSV </a>
+        </li>
+    </ul>
+</body>
+
+</html>

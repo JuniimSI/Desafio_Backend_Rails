@@ -1,0 +1,25 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: postgres
+  password: postgres
+  host: localhost
+
+
+development:
+  <<: *default
+  database: agendaedu_development
+
+ 
+test:
+  <<: *default
+  database: agendaedu_test
+
+production:
+  <<: *default
+  database: agendaedu_production
+  username: agendaedu
+  password: <%= ENV['AGENDAEDU_DATABASE_PASSWORD'] %>

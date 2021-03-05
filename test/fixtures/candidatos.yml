@@ -1,0 +1,67 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  txNomeParlamentar: MyString
+  cpf: MyString
+  ideCadastro: MyString
+  nuCarteiraParlamentar: 1
+  nuLegislatura: 1
+  sgUF: MyString
+  sgPartido: MyString
+  codLegislatura: 1
+  numSubCota: 1
+  txtDescricao: MyText
+  numEspecificacaoSubCota: 1
+  txtDescricaoEspecificacao: MyText
+  txtFornecedor: MyText
+  txtCNPJCPF: MyString
+  txtNumero: 1
+  indTipoDocumento: 1
+  datEmissao: MyString
+  vlrDocumento: 9.99
+  vlrGlosa: 9.99
+  vlrLiquido: 9.99
+  numMes: 1
+  numAno: 1
+  numParcela: 1
+  txtPassageiro: MyText
+  txtTrecho: MyText
+  numLote: 1
+  numRessarcimento: 1
+  vlrRestituicao: 9.99
+  nuDeputadoId: 1
+  ideDocumento: 1
+  urlDocumento: MyText
+
+two:
+  txNomeParlamentar: MyString
+  cpf: MyString
+  ideCadastro: MyString
+  nuCarteiraParlamentar: 1
+  nuLegislatura: 1
+  sgUF: MyString
+  sgPartido: MyString
+  codLegislatura: 1
+  numSubCota: 1
+  txtDescricao: MyText
+  numEspecificacaoSubCota: 1
+  txtDescricaoEspecificacao: MyText
+  txtFornecedor: MyText
+  txtCNPJCPF: MyString
+  txtNumero: 1
+  indTipoDocumento: 1
+  datEmissao: MyString
+  vlrDocumento: 9.99
+  vlrGlosa: 9.99
+  vlrLiquido: 9.99
+  numMes: 1
+  numAno: 1
+  numParcela: 1
+  txtPassageiro: MyText
+  txtTrecho: MyText
+  numLote: 1
+  numRessarcimento: 1
+  vlrRestituicao: 9.99
+  nuDeputadoId: 1
+  ideDocumento: 1
+  urlDocumento: MyText
