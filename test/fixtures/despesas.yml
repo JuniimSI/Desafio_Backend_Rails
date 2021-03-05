@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  datEmissao: 2021-03-05 20:33:44
+  txtFornecedor: MyText
+  vlrLiquido: 9.99
+  urlDocumento: MyText
+  candidato: one
+
+two:
+  datEmissao: 2021-03-05 20:33:44
+  txtFornecedor: MyText
+  vlrLiquido: 9.99
+  urlDocumento: MyText
+  candidato: two

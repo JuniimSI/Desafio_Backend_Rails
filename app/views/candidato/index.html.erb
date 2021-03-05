@@ -26,6 +26,7 @@
     <table class="table">
         <thead class="thead-light">
             <tr>
+                <th scope="col">Img</th>
                 <th scope="col">Id</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Cpf</th>
@@ -34,6 +35,7 @@
         <tbody>
             <% @candidatos.each do |candidato| %>
             <tr>
+            <td> <img class="rounded-circle" width="60px" src="https://www.camara.leg.br/internet/deputado/bandep/<%= candidato.ideCadastro %>.jpg" alt="img"/> </td>
                 <td><%= candidato.id %></td>
                 <td><%= link_to candidato.txNomeParlamentar, candidato_path(candidato) %></td>
                 <td><%= candidato.cpf %></td>
