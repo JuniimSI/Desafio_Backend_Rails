@@ -1,8 +1,10 @@
 <div class="container">
  <img class="rounded-circle" width="120px" src="https://www.camara.leg.br/internet/deputado/bandep/<%= @candidato.ideCadastro %>.jpg" alt="img"/>
     <h1><%= @candidato.txNomeParlamentar %></h1>
-    <h4><%= @candidato.cpf %></h4>
+    <h4>Cpf: <%= @candidato.cpf %></h4>
     <h4><%= @candidato.sgPartido %></h4>
+    <h4>Somatório Despesa: <%= number_to_currency(@somatorio_despesa, :unit => "R$ ")  %></h4>
+    <h4>Maior Despesa: <%= number_to_currency(@max_despesa, :unit => "R$ ") %></h4>
 
     <table class="table">
         <thead class="thead-light">
@@ -14,11 +16,11 @@
             </tr>
         </thead>
         <tbody>
-            <% @candidato.despesas.each do |despesa| %>
+            <% @despesas.each do |despesa| %>
             <tr>
                 <td><%= despesa.datEmissao.strftime("%m/%d/%Y") %> </td>
                 <td><%= despesa.txtFornecedor %></td>
-                <td><%= despesa.vlrLiquido %></td>
+                <td><%= number_to_currency(despesa.vlrLiquido, :unit => "R$") %></td>
                 <td> <a href="<%= despesa.urlDocumento %>"><%= despesa.urlDocumento %></td>
             </tr>
             <% end %>

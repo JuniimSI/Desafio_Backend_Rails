@@ -5,7 +5,9 @@ class CandidatoController < ApplicationController
 
     def show
         @candidato = Candidato.find(params[:id])
-        
+        @despesas = @candidato.despesas.order(vlrLiquido: :desc)
+        @somatorio_despesa = @candidato.despesas.sum(:vlrLiquido)
+        @max_despesa = @candidato.despesas.maximum(:vlrLiquido)
     end
 
     def importar
