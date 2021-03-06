@@ -3,7 +3,7 @@ class CreateDespesas < ActiveRecord::Migration[6.1]
     create_table :despesas do |t|
       t.datetime :datEmissao
       t.text :txtFornecedor
-      t.decimal :vlrLiquido, precision: 5, scale: 2
+      t.decimal :vlrLiquido, precision: 10, scale: 2
       t.text :urlDocumento
       t.references :candidato, null: false, foreign_key: true
 
