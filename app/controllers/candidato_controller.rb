@@ -5,10 +5,10 @@ class CandidatoController < ApplicationController
 
     def show
         @candidato = Candidato.find(params[:id])
-        @despesas = @candidato.despesas.order(vlrLiquido: :desc)
+        @despesas = @candidato.despesas.where.not(datEmissao: nil).order(vlrLiquido: :desc)
         @somatorio_despesa = @candidato.despesas.sum(:vlrLiquido)
         @max_despesa = @candidato.despesas.maximum(:vlrLiquido)
-        @despesas_maiores = @candidato.despesas.order(vlrLiquido: :desc).limit(6)
+        @despesas_maiores = @candidato.despesas.where.not(datEmissao: nil).order(vlrLiquido: :desc).limit(6)
     end
 
     def importar
@@ -21,9 +21,9 @@ class CandidatoController < ApplicationController
 
             next if row[0] == "txNomeParlamentar"
             next if row[5] != "CE"
-            if Candidato.find_by_cpf(row[1]) != nil
-                candidato = Candidato.find_by_cpf(row[1])
 
+            candidato = Candidato.find_by_cpf(row[1])
+            if candidato != nil
                 datEmissao = row[16].strip rescue row[16]
                 txtFornecedor = row[12].strip rescue row[12]
                 vlrLiquido = row[19].strip rescue row[19]
@@ -32,9 +32,6 @@ class CandidatoController < ApplicationController
 
                 next
             end
-
-            
-
 
             txNomeParlamentar = row[0].strip rescue row[0]
             cpf = row[1].strip rescue row[1]
@@ -76,15 +73,22 @@ class CandidatoController < ApplicationController
                 txtTrecho: txtTrecho, numLote: numLote, numRessarcimento: numRessarcimento, vlrRestituicao: vlrRestituicao, nuDeputadoId: nuDeputadoId, ideDocumento: ideDocumento,
                 urlDocumento: urlDocumento
             )
-            rescue Expection => err
+
+            candidato = Candidato.find_by_cpf(row[1])
+
+            candidato.despesas.create(datEmissao: datEmissao, txtFornecedor: txtFornecedor, vlrLiquido: vlrLiquido, urlDocumento: urlDocumento)
+            
+
+            rescue Exception => err
                 erros << err.message
             end
         end
 
         if erros.blank?
+            
             flash[:success] = "Importado com sucesso"
         else
-            falsh[:error] = erros.join(", ")
+            flash[:error] = erros.join(", ")
         end
 
         redirect_to "/candidato"
