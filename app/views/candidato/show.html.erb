@@ -1,2 +1,27 @@
-<h1><%= @candidato.txNomeParlamentar %></h1>
-<h4><%= @candidato.cpf %></h4>
+<div class="container">
+ <img class="rounded-circle" width="120px" src="https://www.camara.leg.br/internet/deputado/bandep/<%= @candidato.ideCadastro %>.jpg" alt="img"/>
+    <h1><%= @candidato.txNomeParlamentar %></h1>
+    <h4><%= @candidato.cpf %></h4>
+    <h4><%= @candidato.sgPartido %></h4>
+
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Data</th>
+                <th scope="col">Estabelecimento</th>
+                <th scope="col">Valor</th>
+                <th scope="col">Link</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @candidato.despesas.each do |despesa| %>
+            <tr>
+                <td><%= despesa.datEmissao.strftime("%m/%d/%Y") %> </td>
+                <td><%= despesa.txtFornecedor %></td>
+                <td><%= despesa.vlrLiquido %></td>
+                <td> <a href="<%= despesa.urlDocumento %>"><%= despesa.urlDocumento %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>

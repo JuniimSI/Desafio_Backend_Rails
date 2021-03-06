@@ -5,6 +5,7 @@ class CandidatoController < ApplicationController
 
     def show
         @candidato = Candidato.find(params[:id])
+        
     end
 
     def importar
@@ -24,7 +25,6 @@ class CandidatoController < ApplicationController
                 txtFornecedor = row[12].strip rescue row[12]
                 vlrLiquido = row[19].strip rescue row[19]
                 urlDocumento = row[30].strip rescue row[30]
-
                 candidato.despesas.create(datEmissao: datEmissao, txtFornecedor: txtFornecedor, vlrLiquido: vlrLiquido, urlDocumento: urlDocumento)
 
                 next
