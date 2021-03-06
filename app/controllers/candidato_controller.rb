@@ -17,6 +17,21 @@ class CandidatoController < ApplicationController
 
             next if row[0] == "txNomeParlamentar"
             next if row[5] != "CE"
+            if Candidato.find_by_cpf(row[1]) != nil
+                candidato = Candidato.find_by_cpf(row[1])
+
+                datEmissao = row[16].strip rescue row[16]
+                txtFornecedor = row[12].strip rescue row[12]
+                vlrLiquido = row[19].strip rescue row[19]
+                urlDocumento = row[30].strip rescue row[30]
+
+                candidato.despesas.create(datEmissao: datEmissao, txtFornecedor: txtFornecedor, vlrLiquido: vlrLiquido, urlDocumento: urlDocumento)
+
+                next
+            end
+
+            
+
 
             txNomeParlamentar = row[0].strip rescue row[0]
             cpf = row[1].strip rescue row[1]

@@ -18,9 +18,9 @@ class CreateCandidatos < ActiveRecord::Migration[6.1]
       t.integer :txtNumero
       t.integer :indTipoDocumento
       t.datetime :datEmissao
-      t.decimal :vlrDocumento, precision: 5, scale: 2
-      t.decimal :vlrGlosa, precision: 5, scale: 2
-      t.decimal :vlrLiquido, precision: 5, scale: 2
+      t.decimal :vlrDocumento, precision: 10, scale: 2
+      t.decimal :vlrGlosa, precision: 10, scale: 2
+      t.decimal :vlrLiquido, precision: 10, scale: 2
       t.integer :numMes
       t.integer :numAno
       t.integer :numParcela
@@ -28,7 +28,7 @@ class CreateCandidatos < ActiveRecord::Migration[6.1]
       t.text :txtTrecho
       t.integer :numLote
       t.integer :numRessarcimento
-      t.decimal :vlrRestituicao, precision: 5, scale: 2
+      t.decimal :vlrRestituicao, precision: 10, scale: 2
       t.integer :nuDeputadoId
       t.integer :ideDocumento
       t.text :urlDocumento
