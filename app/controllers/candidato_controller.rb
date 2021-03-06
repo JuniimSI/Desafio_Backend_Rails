@@ -5,6 +5,10 @@ class CandidatoController < ApplicationController
 
     def show
         @candidato = Candidato.find(params[:id])
+        @despesas = @candidato.despesas.order(vlrLiquido: :desc)
+        @somatorio_despesa = @candidato.despesas.sum(:vlrLiquido)
+        @max_despesa = @candidato.despesas.maximum(:vlrLiquido)
+        @despesas_maiores = @candidato.despesas.order(vlrLiquido: :desc).limit(6)
     end
 
     def importar
@@ -24,7 +28,6 @@ class CandidatoController < ApplicationController
                 txtFornecedor = row[12].strip rescue row[12]
                 vlrLiquido = row[19].strip rescue row[19]
                 urlDocumento = row[30].strip rescue row[30]
-
                 candidato.despesas.create(datEmissao: datEmissao, txtFornecedor: txtFornecedor, vlrLiquido: vlrLiquido, urlDocumento: urlDocumento)
 
                 next

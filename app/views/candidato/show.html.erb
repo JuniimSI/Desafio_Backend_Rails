@@ -1,2 +1,68 @@
-<h1><%= @candidato.txNomeParlamentar %></h1>
-<h4><%= @candidato.cpf %></h4>
+<div class="container">
+    <img class="rounded-circle" width="120px" src="https://www.camara.leg.br/internet/deputado/bandep/<%= @candidato.ideCadastro %>.jpg" alt="img" />
+    <h1><%= @candidato.txNomeParlamentar %></h1>
+    <h4>Cpf: <%= @candidato.cpf %></h4>
+    <h4><%= @candidato.sgPartido %></h4>
+    <h4>Somatório Despesa: <%= number_to_currency(@somatorio_despesa, :unit => "R$ ")  %></h4>
+    <h4>Maior Despesa: <%= number_to_currency(@max_despesa, :unit => "R$ ") %></h4>
+
+    <h1> Gráfico </h1>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load("current", {
+            packages: ['corechart']
+        });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ["Data", "Valor"],
+                <% @despesas_maiores.each do |despesa| %>
+                    ["<%= despesa.datEmissao.strftime("%m/%d/%Y") %> ", <%= despesa.vlrLiquido %>],
+                <% end %>
+            ]);
+
+            var view = new google.visualization.DataView(data);
+            view.setColumns([0, 1]);
+
+            var options = {
+                title: "Principais gastos do candidato",
+                width: '100%',
+                height: 400,
+                bar: {
+                    groupWidth: "95%"
+                },
+                legend: {
+                    position: "none"
+                },
+            };
+            var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+            chart.draw(view, options);
+        }
+    </script>
+    <div id="columnchart_values" style="width: 900px; height: 300px; margin-bottom: 100px"></div>
+
+
+
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Data</th>
+                <th scope="col">Estabelecimento</th>
+                <th scope="col">Valor</th>
+                <th scope="col">Link</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @despesas.each do |despesa| %>
+            <tr>
+                <td><%= despesa.datEmissao.strftime("%m/%d/%Y") %> </td>
+                <td><%= despesa.txtFornecedor %></td>
+                <td><%= number_to_currency(despesa.vlrLiquido, :unit => "R$") %></td>
+                <td> <a href="<%= despesa.urlDocumento %>"><%= despesa.urlDocumento %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
