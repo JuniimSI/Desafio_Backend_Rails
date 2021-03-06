@@ -1,3 +1,28 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+.container-home{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    background-image: url('bg.jpg');
+    flex-direction: column;
+    background-position: center;
+    background-size: cover;
+
+}
+
+.title-text{
+    text-align: center;
+    font-size: 3rem;
+}
+
+.subtitle-text{
+    text-align: center;
+    font-size: 2rem;
+}
+
