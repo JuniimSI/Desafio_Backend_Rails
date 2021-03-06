@@ -8,7 +8,7 @@ class CandidatoController < ApplicationController
         @despesas = @candidato.despesas.where.not(datEmissao: nil).order(vlrLiquido: :desc)
         @somatorio_despesa = @candidato.despesas.sum(:vlrLiquido)
         @max_despesa = @candidato.despesas.maximum(:vlrLiquido)
-        @despesas_maiores = @candidato.despesas.where.not(datEmissao: nil).order(vlrLiquido: :desc).limit(6)
+        @despesas_maiores = @candidato.despesas.where.not(datEmissao: nil).order(vlrLiquido: :desc).limit(7)
     end
 
     def importar

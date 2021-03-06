@@ -9,20 +9,25 @@
     align-items: center;
     justify-content: center;
     align-content: center;
-    background-image: url('bg.jpg');
+    background-image: url('bg-blur.jpg');
     flex-direction: column;
     background-position: center;
     background-size: cover;
-
+    padding-bottom: 200px;
+    
 }
 
 .title-text{
     text-align: center;
     font-size: 3rem;
+    color: white;
+    text-shadow: 1px 1px 2px rgb(21, 121, 208), 0 0 1em rgb(0, 157, 255), 0 0 0.2em blue;
 }
 
 .subtitle-text{
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.5rem;
+    color: white;
+    text-shadow: 1px 1px 2px rgb(21, 121, 208), 0 0 1em rgb(0, 157, 255), 0 0 0.2em blue;
 }
 
