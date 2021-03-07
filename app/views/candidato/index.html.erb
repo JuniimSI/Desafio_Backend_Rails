@@ -1,10 +1,5 @@
 <html>
 
-<% if flash[:notice] %>
-    <div class="alert alert-success alert-dismissible fade show"><%= flash[:notice] %></div>
-<% elsif flash[:alert]%>
-    <div class="alert alert-danger alert-dismissible fade show"><%= flash[:alert] %></div>
-<% end %>
 
 
 <nav class="navbar navbar-primary bg-primary">
@@ -13,6 +8,16 @@
     </a>
 
 </nav>
+
+<div>
+    <% if flash[:notice] %>
+    <div class="alert alert-success alert-dismissible fade show"><%= flash[:notice] %></div>
+    <% elsif flash[:alert]%>
+        <div class="alert alert-danger alert-dismissible fade show"><%= flash[:alert] %></div>
+    <% end %>
+
+</div>
+
 
 <div class="list-container">
     <div class="container">

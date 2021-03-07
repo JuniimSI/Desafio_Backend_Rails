@@ -1,10 +1,11 @@
-require 'rails_helper'
+require 'rails_helper' 
 
-describe Candidato, type: :model do
-    describe "test" do
-        it "soma 2" do
-            a = 1+1
-            expect(1+1).to eq(2)
-        end
+describe Candidato do 
+    describe "ideCadastro must be valid" do
+        it "is valid candidato" do           
+            candidato = build(:candidato, ideCadastro: nil)
+            expect(candidato).to_not be_valid 
+        end       
     end
+
 end

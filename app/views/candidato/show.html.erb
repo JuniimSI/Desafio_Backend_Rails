@@ -83,18 +83,18 @@
         <table class="table table-primary table-hover">
             <thead class="thead-light">
                 <tr>
-                    <th scope="col">Data</th>
-                    <th scope="col">Estabelecimento</th>
-                    <th scope="col">Valor</th>
-                    <th scope="col">Link</th>
+                    <th scope="col"> Data </th>
+                    <th scope="col"> Estabelecimento </th>
+                    <th scope="col"> Valor </th>
+                    <th scope="col"> Link </th>
                 </tr>
             </thead>
             <tbody>
                 <% @candidato.get_despesas.each do |despesa| %>
                 <tr>
-                    <td><%= despesa.datEmissao.strftime("%m/%d/%Y") %> </td>
-                    <td><%= despesa.txtFornecedor %></td>
-                    <td><%= number_to_currency(despesa.vlrLiquido, :unit => "R$") %></td>
+                    <td> <%= despesa.datEmissao.strftime("%m/%d/%Y") %> </td>
+                    <td> <%= despesa.txtFornecedor %> </td>
+                    <td> <%= number_to_currency(despesa.vlrLiquido, :unit => "R$") %> </td>
                     <td> <a href="<%= despesa.urlDocumento %>"><%= despesa.urlDocumento %></td>
                 </tr>
                 <% end %>
