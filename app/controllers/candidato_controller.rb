@@ -1,10 +1,11 @@
 class CandidatoController < ApplicationController
+    before_action :set_candidato, only: [:show]
+
     def index
         @candidatos = Candidato.all
     end
 
     def show
-        @candidato = Candidato.find(params[:id])
         @despesas = @candidato.despesas.where.not(datEmissao: nil).order(vlrLiquido: :desc)
     end
 
@@ -95,5 +96,12 @@ class CandidatoController < ApplicationController
             flash[:alert] = "Arquivo vazio, selecione para enviar."
         end
     end
+
+    private
+
+    def set_candidato
+        @candidato = Candidato.find(params[:id])
+    end
+    
 
 end
