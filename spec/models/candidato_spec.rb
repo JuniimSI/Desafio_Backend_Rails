@@ -2,9 +2,10 @@ require 'rails_helper'
 
 describe Candidato do 
     describe "ideCadastro must be valid" do
-        it "Soma 2" do
-            candidato = 1+1
-            expect(candidato).to eq(2) 
+        it "is valid candidato" do           
+            candidato = build(:candidato, ideCadastro: nil)
+            expect(candidato).to_not be_valid 
         end       
     end
+
 end
