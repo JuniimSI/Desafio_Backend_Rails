@@ -10,7 +10,7 @@ gem 'rack-attack'
 #foreman
 gem 'foreman', '~> 0.87.2'
 
-ruby '2.7.0'
+ruby '2.7.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.3'
