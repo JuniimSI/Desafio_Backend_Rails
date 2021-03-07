@@ -40,12 +40,21 @@ RSpec.describe CandidatoController do
         before(:each) do
             @file = fixture_file_upload('array_test.csv', 'text/csv')
         end
+        let(:candidato) {create(:candidato)}
         
         it "should success insert csv on database" do
             expect do
                 post :importar, params: {csv: @file }
             end.to change { Candidato.count }.by(3)
         end
+
+        it "when candidato is on db" do
+            post :importar, params: {csv: @file }
+            expect do
+                post :importar, params: {csv: @file }
+            end.to change { Candidato.count }.by(0)
+        end
+
     end
 
 

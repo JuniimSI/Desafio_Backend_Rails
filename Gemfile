@@ -44,6 +44,7 @@ group :development, :test do
   gem 'ffaker'
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
+  gem 'simplecov'
 end
 
 group :development do
