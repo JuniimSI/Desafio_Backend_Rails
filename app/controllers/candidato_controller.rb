@@ -86,12 +86,14 @@ class CandidatoController < ApplicationController
             end
 
             if erros.blank?
-                flash[:success] = "Importado com sucesso"
+                puts ('------------------------- entrou no if')
+                flash[:notice] = "Importado com sucesso"
             else
-                flash[:error] = erros.join(", ")
+                puts ('------------------------- entrou no else')
+                flash[:alert] = erros.join(", ")
             end
 
-            redirect_to "/candidato"
+            redirect_to candidato_index_path, notice: "qualquer mensagem aqui"
         end
     end
 
