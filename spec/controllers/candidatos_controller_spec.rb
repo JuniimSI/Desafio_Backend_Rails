@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe CandidatoController do
+    
     context "Get #index" do
         it "should success and render to index page" do
             get :index
@@ -20,7 +21,7 @@ RSpec.describe CandidatoController do
         end
         
     end
-
+    
     context "Get #show" do
         let(:candidato) {create(:candidato)}
         it "should success and render to show page" do
@@ -49,14 +50,17 @@ RSpec.describe CandidatoController do
         end
 
         it "when candidato is on db" do
-            post :importar, params: {csv: @file }
             expect do
                 post :importar, params: {csv: @file }
+            end.to change { Candidato.count }.by(3)
+        end
+
+        it "when sent wihout file" do
+            expect do
+                post :importar
             end.to change { Candidato.count }.by(0)
         end
 
+       
     end
-
-
-
 end
