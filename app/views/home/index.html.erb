@@ -1,13 +1,12 @@
 <html>
 
 <body>
-    <h1><%= @deputados %></h1>
-    
-    <ul>
-        <li> <% if params[:controller] == "candidato" %> <% end %>
-            <a href="/candidato"> Iniciar </a>
-        </li>
-    </ul>
+    <div class="container-home">
+     <%=image_tag("icon.png", widht: 300, height: 300, alt: "Home")%>
+    <h1 class="title-text">Quer saber quem está gastando o <br> que no estado do ceará? </h1>
+    <h3 class="subtitle-text"> Verifique as despesas, as datas, e os fornecedores dos candidatos de 2020. </h3>
+        <a href="/candidato" class="btn btn-primary" role="button">Inicie sua pesquisa...</a>
+    </div>
 </body>
 
 </html>

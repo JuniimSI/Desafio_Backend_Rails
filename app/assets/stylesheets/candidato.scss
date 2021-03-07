@@ -1,3 +1,97 @@
-// Place all the styles related to the candidato controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.container {
+    margin-top: 30px;
+}
+
+.list-container{
+    margin-top: -30px;
+    background-image: url('bg-blur.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.logo{
+    padding-left: 60px;
+}
+.upload-content {
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(98, 190, 255);
+    border-radius: 15px;
+    padding: 30px 5px;
+    margin-bottom: 30px;
+    
+}
+
+.upload-content h2{
+    padding-top: 40px;
+}
+
+.candidatos-list{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.candidatos-item{
+    margin: 10px;
+}
+
+.all{
+    width: 100%;
+}
+
+.show-container{
+    margin-top: -30px;
+    width: 100%;
+    background-image: url('bg-blur.jpg');
+    background-position: center;
+    background-size: cover;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    display: flex;
+}
+
+.header-info{
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    background-color: rgb(98, 190, 255);
+    border-radius: 15px;
+    padding: 30px;
+    display: flex;
+}
+
+.header-info img{
+    border-radius: 10px;
+    border: solid 2px rgb(0, 136, 255);
+}
+
+.header-info .content{
+    text-align: center;
+    margin-left: 20px;
+}
+
+.header-info .cards-header{
+    margin-left: 20px;
+}
+
+.header-info .cards-header .card{
+    margin-top: 5px;
+    border-radius: 10px;
+}
+
+.container-grafico{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+
+.container-table table{
+    padding: 10px;
+}

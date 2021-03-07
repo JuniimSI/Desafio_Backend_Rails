@@ -1,49 +1,51 @@
 <html>
 
-<head>
+    <% if flash[:notice] %>
+        <div class="alert"><%= flash[:notice] %></div>
+    <% end %>
+  
 
-</head>
+<nav class="navbar navbar-primary bg-primary">
+    <a class="navbar-brand logo" href="/">
+        <%=image_tag("icon.png", widht: 40, height: 40, alt: "Home")%>
+    </a>
+    
+</nav>
 
-<body class="container">
-    <h1>Upload</h1>
+
+
+
+<div class="list-container">
+<div class="container">
+
+    <div class="upload-content">
     <form action="/candidato/importar" enctype="multipart/form-data" method="post" enc>
         <fieldset>
-            <div class="row">
-                <div class="col">
-                    <legend> Arquivo </legend>
-                </div>
-                <div class="col-6">
+            <div class="row center">
+                <div class="col-10">
                     <input type="file" class="form-control" name="csv">
                 </div>
-                <div class="col">
+                <div class="col-2">
                     <input type="submit" class="btn btn-primary" name="Enviar">
                 </div>
             </div>
         </fieldset>
     </form>
     <br />
+    </div>
 
-    <table class="table">
-        <thead class="thead-light">
-            <tr>
-                <th scope="col">Img</th>
-                <th scope="col">Id</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Cpf</th>
-            </tr>
-        </thead>
-        <tbody>
-            <% @candidatos.each do |candidato| %>
-            <tr>
-            <td> <img class="rounded-circle" width="60px" src="https://www.camara.leg.br/internet/deputado/bandep/<%= candidato.ideCadastro %>.jpg" alt="img"/> </td>
-                <td><%= candidato.id %></td>
-                <td><%= link_to candidato.txNomeParlamentar, candidato_path(candidato) %></td>
-                <td><%= candidato.cpf %></td>
-            </tr>
-            <% end %>
-        </tbody>
-    </table>
-
-</body>
-
+    <div class="candidatos-list">
+        <% @candidatos.each do |candidato| %>
+        <div class="card candidatos-item shadow-sm p-3 mb-5 bg-white rounded">
+            <img class="card-img-top" src="https://www.camara.leg.br/internet/deputado/bandep/<%= candidato.ideCadastro %>.jpg" alt=" Card image cap">
+            <div class="card-body">
+                <h5 class="card-title"><%=  candidato.txNomeParlamentar %></h5>
+                <p class="card-text"><%= candidato.sgPartido %></p>
+                <a href="/candidato/<%=candidato.id %>" class="btn btn-primary all">Detalhes</a>
+            </div>
+        </div>
+        <% end %>
+    </div>
+</div>
+</div>
 </html>
