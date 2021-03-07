@@ -72,8 +72,9 @@ class CandidatoController < ApplicationController
                     urlDocumento: urlDocumento
                 )
 
-                candidato = Candidato.find_by_cpf(row[1])
+                next if Candidato.find_by_cpf(row[1]) == nil
 
+                candidato = Candidato.find_by_cpf(row[1])
                 candidato.despesas.create(datEmissao: datEmissao, txtFornecedor: txtFornecedor, vlrLiquido: vlrLiquido, urlDocumento: urlDocumento)
                 
 
