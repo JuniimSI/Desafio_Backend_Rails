@@ -4,4 +4,5 @@ FactoryBot.define do
       cpf {FFaker::Lorem.word}
       ideCadastro {FFaker::Lorem.word}
     end
+
 end
