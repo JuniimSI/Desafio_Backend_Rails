@@ -21,7 +21,7 @@ class CandidatoController < ApplicationController
                     next if row[0] == "txNomeParlamentar"
                     next if row[5] != "CE"
 
-                    candidato = Candidato.find_by_cpf(row[1])
+                    candidato = Candidato.find_by(cpf: row[1]) 
                     if candidato != nil
                         datEmissao = row[16].strip rescue row[16]
                         txtFornecedor = row[12].strip rescue row[12]
@@ -64,7 +64,7 @@ class CandidatoController < ApplicationController
                     ideDocumento = row[29].strip rescue row[29]
                     urlDocumento = row[30].strip rescue row[30]
 
-                    Candidato.create(
+                    Candidato.create!(
                         txNomeParlamentar: txNomeParlamentar, cpf: cpf, ideCadastro: ideCadastro, nuCarteiraParlamentar: nuCarteiraParlamentar, nuLegislatura: nuLegislatura,
                         sgUF: sgUF, sgPartido: sgPartido, codLegislatura: codLegislatura, numSubCota: numSubCota, txtDescricao: txtDescricao, numEspecificacaoSubCota: numEspecificacaoSubCota,
                         txtDescricaoEspecificacao: txtDescricaoEspecificacao, txtFornecedor: txtFornecedor, txtCNPJCPF: txtCNPJCPF, txtNumero: txtNumero, indTipoDocumento: indTipoDocumento, datEmissao: datEmissao,
@@ -73,13 +73,13 @@ class CandidatoController < ApplicationController
                         urlDocumento: urlDocumento
                     )
 
-                    next if Candidato.find_by_cpf(row[1]) == nil
+                    next if Candidato.find_by(cpf: row[1]).nil?
 
-                    candidato = Candidato.find_by_cpf(row[1])
+                    candidato = Candidato.find_by(cpf: row[1]) 
                     candidato.despesas.create(datEmissao: datEmissao, txtFornecedor: txtFornecedor, vlrLiquido: vlrLiquido, urlDocumento: urlDocumento)
                     
 
-                    rescue Exception => err
+                    rescue => err
                         erros << err.message
                     end
                 end

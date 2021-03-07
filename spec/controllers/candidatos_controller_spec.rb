@@ -43,7 +43,7 @@ RSpec.describe CandidatoController do
         end
         let(:candidato) {create(:candidato)}
         
-        it "should success insert csv on database" do
+        it "when file it is in the correct format" do
             expect do
                 post :importar, params: {csv: @file }
             end.to change { Candidato.count }.by(3)
@@ -55,12 +55,17 @@ RSpec.describe CandidatoController do
             end.to change { Candidato.count }.by(3)
         end
 
-        it "when sent wihout file" do
+        it "when sent without a file" do
             expect do
                 post :importar
             end.to change { Candidato.count }.by(0)
         end
 
-       
+        it "when erros on parser" do
+            @file_error = fixture_file_upload('array_test_error.csv', 'text/csv')
+            expect do
+                post :importar, params: {csv: @file_error }
+            end.to change { Candidato.count }.by(0)
+        end
     end
 end
