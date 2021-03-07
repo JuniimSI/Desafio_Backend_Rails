@@ -27,12 +27,12 @@
             <div class="cards-header">
                 <div class="card">
                     <div class="card-body">
-                        Maior Despesa: <%= number_to_currency(@max_despesa, :unit => "R$ ") %>
+                        Maior Despesa: <%= number_to_currency(@candidato.despesa_max, :unit => "R$ ") %>
                     </div>
                 </div>
                 <div class="card">
                     <div class="card-body">
-                        Somatório Despesa: <%= number_to_currency(@somatorio_despesa, :unit => "R$ ")  %>
+                        Somatório Despesa: <%= number_to_currency(@candidato.despesa_somatorio, :unit => "R$ ")  %>
                     </div>
                 </div>
                 
@@ -51,7 +51,7 @@
             function drawChart() {
                 var data = google.visualization.arrayToDataTable([
                     ["Data", "Valor"],
-                    <% @despesas_maiores.each do |despesa| %>
+                    <% @candidato.despesas_maiores.each do |despesa| %>
                         ["<%= despesa.datEmissao.strftime("%m/%d/%Y") %> ", <%= despesa.vlrLiquido %>],
                     <% end %>
                 ]);
@@ -90,7 +90,7 @@
                 </tr>
             </thead>
             <tbody>
-                <% @despesas.each do |despesa| %>
+                <% @candidato.get_despesas.each do |despesa| %>
                 <tr>
                     <td><%= despesa.datEmissao.strftime("%m/%d/%Y") %> </td>
                     <td><%= despesa.txtFornecedor %></td>
