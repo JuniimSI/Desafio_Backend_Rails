@@ -7,7 +7,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gem 'rack-cors'
 gem 'rack-attack'
 
-
+#foreman
+gem 'foreman', '~> 0.87.2'
 
 ruby '2.7.0'
 
