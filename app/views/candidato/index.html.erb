@@ -1,9 +1,9 @@
 <html>
 
 <% if flash[:notice] %>
-    <div class="alert alert-success"><%= flash[:notice] %></div>
-<% elsif %>
-    <div class="alert alert-error"><%= flash[:alert] %></div>
+    <div class="alert alert-success alert-dismissible fade show"><%= flash[:notice] %></div>
+<% elsif flash[:alert]%>
+    <div class="alert alert-danger alert-dismissible fade show"><%= flash[:alert] %></div>
 <% end %>
 
 
@@ -14,39 +14,13 @@
 
 </nav>
 
-
-
-
 <div class="list-container">
     <div class="container">
-
         <div class="upload-content">
-
-            
-        <%= form_with url: "/candidato/importar", multipart: true do |form| %>
-            <%= form.file_field :csv %>
-            <input type="submit" class="btn btn-primary" name="Enviar">
-        <% end %>
-
-
-            <%
-=begin%>
- <form action="/candidato/importar" enctype="multipart/form-data" method="post">
-                <fieldset>
-                    <div class="row center">
-                        <div class="col-10">
-                            <input type="file" class="form-control" name="csv">
-                        </div>
-                        <div class="col-2">
-                            <input type="submit" class="btn btn-primary" name="Enviar">
-                        </div>
-                    </div>
-                </fieldset>
-            </form> 
-<%
-=end%>
-
-
+            <%= form_with url: "/candidato/importar", multipart: true do |form| %>
+                <%= form.file_field :csv %>
+                <input type="submit" class="btn btn-primary" name="Enviar">
+            <% end %>
             <br />
         </div>
 

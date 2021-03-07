@@ -1,6 +1,8 @@
 class Candidato < ApplicationRecord
     has_many :despesas
 
+    validates :ideCadastro, presence: { message: "Idecadastro must be valid" }
+
     def despesas_maiores
         self.despesas.where.not(datEmissao: nil).order(vlrLiquido: :desc).limit(7)
     end
