@@ -1,6 +1,5 @@
 .container {
     margin-top: 30px;
-    background-color: azure;
 }
 
 .list-container{
@@ -14,10 +13,16 @@
     padding-left: 60px;
 }
 .upload-content {
-    margin-top: 30px;
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
     align-items: center;
     justify-content: center;
-    align-content: center;
+    background-color: rgb(98, 190, 255);
+    border-radius: 15px;
+    padding: 30px 5px;
+    margin-bottom: 30px;
+    
 }
 
 .upload-content h2{

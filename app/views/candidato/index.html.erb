@@ -1,11 +1,9 @@
 <html>
-<%byebug%>
-<% if flash[:notice] %>
-    <p class="notice"> <%= notice %></p>
-<% elsif alert %>
-    <p class="alert"> <%= alert %></p>
-<% end %>
 
+    <% if flash[:notice] %>
+        <div class="alert"><%= flash[:notice] %></div>
+    <% end %>
+  
 
 <nav class="navbar navbar-primary bg-primary">
     <a class="navbar-brand logo" href="/">
@@ -21,14 +19,13 @@
 <div class="container">
 
     <div class="upload-content">
-    <h2>Suba seu arquivo</h2>
     <form action="/candidato/importar" enctype="multipart/form-data" method="post" enc>
         <fieldset>
-            <div class="row">
-                <div class="col-6">
+            <div class="row center">
+                <div class="col-10">
                     <input type="file" class="form-control" name="csv">
                 </div>
-                <div class="col">
+                <div class="col-2">
                     <input type="submit" class="btn btn-primary" name="Enviar">
                 </div>
             </div>
