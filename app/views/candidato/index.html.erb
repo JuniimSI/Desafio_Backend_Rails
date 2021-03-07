@@ -1,51 +1,68 @@
 <html>
 
-    <% if flash[:notice] %>
-        <div class="alert"><%= flash[:notice] %></div>
-    <% end %>
-  
+<% if flash[:notice] %>
+    <div class="alert alert-success"><%= flash[:notice] %></div>
+<% elsif %>
+    <div class="alert alert-error"><%= flash[:alert] %></div>
+<% end %>
+
 
 <nav class="navbar navbar-primary bg-primary">
     <a class="navbar-brand logo" href="/">
         <%=image_tag("icon.png", widht: 40, height: 40, alt: "Home")%>
     </a>
-    
+
 </nav>
 
 
 
 
 <div class="list-container">
-<div class="container">
+    <div class="container">
 
-    <div class="upload-content">
-    <form action="/candidato/importar" enctype="multipart/form-data" method="post" enc>
-        <fieldset>
-            <div class="row center">
-                <div class="col-10">
-                    <input type="file" class="form-control" name="csv">
-                </div>
-                <div class="col-2">
-                    <input type="submit" class="btn btn-primary" name="Enviar">
-                </div>
-            </div>
-        </fieldset>
-    </form>
-    <br />
-    </div>
+        <div class="upload-content">
 
-    <div class="candidatos-list">
-        <% @candidatos.each do |candidato| %>
-        <div class="card candidatos-item shadow-sm p-3 mb-5 bg-white rounded">
-            <img class="card-img-top" src="https://www.camara.leg.br/internet/deputado/bandep/<%= candidato.ideCadastro %>.jpg" alt=" Card image cap">
-            <div class="card-body">
-                <h5 class="card-title"><%=  candidato.txNomeParlamentar %></h5>
-                <p class="card-text"><%= candidato.sgPartido %></p>
-                <a href="/candidato/<%=candidato.id %>" class="btn btn-primary all">Detalhes</a>
-            </div>
-        </div>
+            
+        <%= form_with url: "/candidato/importar", multipart: true do |form| %>
+            <%= form.file_field :csv %>
+            <input type="submit" class="btn btn-primary" name="Enviar">
         <% end %>
+
+
+            <%
+=begin%>
+ <form action="/candidato/importar" enctype="multipart/form-data" method="post">
+                <fieldset>
+                    <div class="row center">
+                        <div class="col-10">
+                            <input type="file" class="form-control" name="csv">
+                        </div>
+                        <div class="col-2">
+                            <input type="submit" class="btn btn-primary" name="Enviar">
+                        </div>
+                    </div>
+                </fieldset>
+            </form> 
+<%
+=end%>
+
+
+            <br />
+        </div>
+
+        <div class="candidatos-list">
+            <% @candidatos.each do |candidato| %>
+            <div class="card candidatos-item shadow-sm p-3 mb-5 bg-white rounded">
+                <img class="card-img-top" src="https://www.camara.leg.br/internet/deputado/bandep/<%= candidato.ideCadastro %>.jpg" alt=" Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title"><%=  candidato.txNomeParlamentar %></h5>
+                    <p class="card-text"><%= candidato.sgPartido %></p>
+                    <a href="/candidato/<%=candidato.id %>" class="btn btn-primary all">Detalhes</a>
+                </div>
+            </div>
+            <% end %>
+        </div>
     </div>
 </div>
-</div>
+
 </html>

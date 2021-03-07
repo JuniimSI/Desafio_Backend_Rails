@@ -6,9 +6,6 @@ class CandidatoController < ApplicationController
     def show
         @candidato = Candidato.find(params[:id])
         @despesas = @candidato.despesas.where.not(datEmissao: nil).order(vlrLiquido: :desc)
-        @somatorio_despesa = @candidato.despesas.sum(:vlrLiquido)
-        @max_despesa = @candidato.despesas.maximum(:vlrLiquido)
-        @despesas_maiores = @candidato.despesas.where.not(datEmissao: nil).order(vlrLiquido: :desc).limit(7)
     end
 
     def importar
@@ -86,12 +83,12 @@ class CandidatoController < ApplicationController
             end
 
             if erros.blank?
-                flash.now[:notice] = "Importado com sucesso"
+                flash[:notice] = "Importado com sucesso"
             else
-                flash.now[:alert] = erros.join(", ")
+                flash[:alert] = erros.join(", ")
             end
 
-            redirect_to candidato_index_path, alert: "qualquer mensagem aqui"
+            redirect_to candidato_index_path
         end
     end
 
