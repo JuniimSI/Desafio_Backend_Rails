@@ -90,6 +90,9 @@ class CandidatoController < ApplicationController
             end
 
             redirect_to candidato_index_path
+        else
+            redirect_to candidato_index_path
+            flash[:alert] = "Arquivo vazio, selecione para enviar."
         end
     end
 
