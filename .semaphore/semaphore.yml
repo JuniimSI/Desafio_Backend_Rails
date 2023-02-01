@@ -16,3 +16,14 @@ blocks:
         - name: Setup project
           commands:
             - echo 'initial'
+  - name: 'Block #2'
+    task:
+      jobs:
+        - name: 'Job #1'
+          commands:
+            - bundle exec rspec
+after_pipeline:
+  task:
+    jobs:
+      - name: 'Job #1'
+        commands: []
