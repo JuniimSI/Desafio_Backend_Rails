@@ -21,6 +21,12 @@ blocks:
       jobs:
         - name: 'Job #1'
           commands:
+            - bundle install
+  - name: 'Block #3'
+    task:
+      jobs:
+        - name: 'Job #1'
+          commands:
             - bundle exec rspec
 after_pipeline:
   task:
