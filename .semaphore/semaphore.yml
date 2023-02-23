@@ -15,7 +15,7 @@ blocks:
       jobs:
         - name: Setup project
           commands:
-            - echo 'initial'
+            - echo 'initial' xD
   - name: 'Block #2'
     task:
       jobs:
